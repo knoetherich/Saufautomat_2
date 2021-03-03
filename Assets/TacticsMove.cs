@@ -36,7 +36,7 @@ public class TacticsMove : MonoBehaviour
     public void GetCurrentTile()
     {
         currentTile = GetTargetTile(gameObject);
-        //currentTile.current = true;
+        currentTile.current = true;
     }
 
     public Tile GetTargetTile(GameObject target)
@@ -82,7 +82,7 @@ public class TacticsMove : MonoBehaviour
             {
                 foreach(Tile tile in t.adjacencyList)
                 {
-                    if(!tile.visited)   //&& t.GetComponent<Renderer>().material == Resources.Load<Material>("Street")s
+                    if(!tile.visited) 
                     {
                         tile.parent = t;
                         tile.visited = true;
@@ -156,8 +156,8 @@ public class TacticsMove : MonoBehaviour
     {
         if(currentTile != null)
         {
-            //currentTile.current = false;
-            //currentTile = null;
+            currentTile.current = true;        
+            currentTile = null;
         }
 
         foreach(Tile tile in selectableTile)

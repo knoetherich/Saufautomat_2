@@ -76,10 +76,12 @@ public class Tile : MonoBehaviour
             if(tile!=null && tile.walkable)
             {
                 RaycastHit hit;         //Prüfen ob etwas bereits auf einem Tile steht 
-                if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1))
+                /**if (!Physics.Raycast(tile.transform.position, Vector3.up, out hit, 1))
                 {
                     adjacencyList.Add(tile);
-                }
+                }**/
+
+                adjacencyList.Add(tile);
             }
         }
     }

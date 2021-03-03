@@ -50,6 +50,18 @@ public class PlayerMove : TacticsMove
                         
                     }
                 }
+
+                if(hit.collider.tag == "Player")
+                {
+                    Debug.Log("Player getouched");
+                    //Tile t = hit.collider.GetComponent<Player>();
+
+                    /**if(t.selectable)
+                    {
+                        MoveToTile(t);
+                        
+                    }**/
+                }
             }
         }
     }
