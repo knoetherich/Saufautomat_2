@@ -1,2 +1,4 @@
-# Saufautomat_2
-Besoffski Game
+# Saufautomat
+Saugeiles Trinkspiel im Mario Party Stil 
+
+Release date: 2043
