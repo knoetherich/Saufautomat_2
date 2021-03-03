@@ -7,6 +7,7 @@ public class TacticsMove : MonoBehaviour
     public bool turn = false;                       //Ist true wenn der Spieler dran ist
     List<Tile> selectableTile = new List<Tile>();
     GameObject[] tiles;
+    GameObject[] player;
     Stack<Tile> path = new Stack<Tile>();
     Tile currentTile;
     public bool moving = false;
@@ -26,10 +27,10 @@ public class TacticsMove : MonoBehaviour
     protected void Init()
     {
         tiles = GameObject.FindGameObjectsWithTag("Tile"); 
-
+        player = GameObject.FindGameObjectsWithTag("Player");    //Um Auf Spieler zu springen
         halfHeight =  GetComponent<Collider>().bounds.extents.y;
 
-        TurnManager.AddUnit(this);                                  //this = current tacticsMove Object
+        TurnManager.AddUnit(this);                         //this = current tacticsMove Object
 
     }
 
@@ -44,7 +45,7 @@ public class TacticsMove : MonoBehaviour
         RaycastHit hit;
         Tile tile = null;
 
-        if(Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1))
+        if(Physics.Raycast(target.transform.position, -Vector3.up, out hit, 1))  //-Vector3
         {
             tile = hit.collider.GetComponent<Tile>();
         }
@@ -113,8 +114,10 @@ public class TacticsMove : MonoBehaviour
         if(path.Count > 0)
         {
             Tile t = path.Peek();
+            RaycastHit hit;
             Vector3 target = t.transform.position;
-            //Calculate the Unity position on top of the target tile
+            //Calculate the Unit position on top of the target tile
+
             target.y += halfHeight + t.GetComponent<Collider>().bounds.extents.y;
 
             if(Vector3.Distance(transform.position, target)>= 0.05f)
